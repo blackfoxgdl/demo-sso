@@ -66,7 +66,7 @@ app.post('/register', (req, res, next) => {
 });
 
 app.post('/login', (req, res, next) => {
-  console.log('req: ', req.body.email.trim());
+  console.log(req.body.email);
   UserModel.findOne({ email: req.body.email })
     .then((user) => {
       bcrypt
