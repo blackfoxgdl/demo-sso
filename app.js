@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const dbConnect = require('./db/dbConnect');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt').bcrypt;
 const jwt = require('jsonwebtoken');
 const UserModel = require('./db/userModel');
 const auth = require('./auth');
@@ -33,6 +33,9 @@ app.get('/', (req, res, next) => {
 app.post('/register', (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+
+  console.log('data: ', req);
+  console.log('body: ', req.body);
 
   bcrypt
     .hash(password, 10)
